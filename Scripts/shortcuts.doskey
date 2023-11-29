@@ -1,0 +1,11 @@
+eclall= call D:\HSC_WORKSPACE\SCRIPTS\sbt_eclipse.bat
+ccpa=call D:\HSC_WORKSPACE\SCRIPTS\ccpa.bat
+ccp=sbt update clean compile publishLocal
+ccpd=sbt update clean compile publishLocal dist
+build=call D:\HSC_WORKSPACE\SCRIPTS\build.bat
+buildui=call D:\HSC_WORKSPACE\SCRIPTS\buildui.bat
+sui=sencha app build development
+cpy=D:\HSC_WORKSPACE\SCRIPTS\cpy.bat
+api=cd.. && cd alert-api-server-1.0 && if exist "RUNNING_PID" (del "RUNNING_PID") else (echo pid file does not exists) && java -cp "./lib/*" -Dconfig.file=conf/application.conf -Xms8g -Xmx8g -Xss4M -Dhttp.port=9000 -Dpidfile.path="NUL" -Dlogback.debug=true -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=0.0.0.0:9999 -Djava.awt.headless=true -Dmail.smtp.starttls.enable=true -Dmail.smtp.ssl.protocols=TLSv1.2 -Dlog4j.configurationFile=conf/log4j2.xml -Dorg.owasp.esapi.resources=conf play.core.server.ProdServerStart && cd ../alert-ui
+job=cd.. && cd alert-job-server-1.0 && if exist "RUNNING_PID" (del "RUNNING_PID") else (echo pid file does not exists) && java -cp "./lib/*" -Dconfig.file=conf/jobserver.conf -Xms8g -Xmx8g -Xss4M -Dhttp.port=9090 -Dpidfile.path="NUL" -Dlogback.debug=true -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=0.0.0.0:9191 -Djava.awt.headless=true -Dmail.smtp.starttls.enable=true -Dmail.smtp.ssl.protocols=TLSv1.2 -Dlog4j.configurationFile=conf/log4j2.xml -Dorg.owasp.esapi.resources=conf play.core.server.ProdServerStart && cd ../alert-ui
+eve=cd.. && cd alert-agent-1.0 &&  if exist "RUNNING_PID" (del "RUNNING_PID") else (echo pid file does not exists) && java -cp "./lib/*" -Dconfig.file=conf/application.conf -Xms2g -Xmx2g -Xss4M -Dhttp.port=9095 -Dpidfile.path="NUL" -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=0.0.0.0:9997 -Dlogback.debug=true -Djava.awt.headless=true -Dlog4j.configurationFile=conf/log4j2.xml -Dorg.owasp.esapi.resources=conf play.core.server.ProdServerStart && cd ../alert-ui
