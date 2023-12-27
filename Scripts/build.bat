@@ -16,14 +16,14 @@ if exist "%password%\alertapiserver\" (
 
 if exist "%password%\alertjobserver\" (
     echo alertjobserver directory found
-	start cmd /c "cd /d %password%\alertjobserver &&  sbt update clean compile publishLocal dist && "C:\Program Files\WinRAR\WinRAR.exe" x "%password%\alertjobserver\target\universal\alert-job-server-1.0.zip" "%newPath%""
+	start cmd /K "cd /d %password%\alertjobserver &&  sbt update clean compile publishLocal dist && "C:\Program Files\WinRAR\WinRAR.exe" x "%password%\alertjobserver\target\universal\alert-job-server-1.0.zip" "%newPath%""
 ) else (
     echo alertjobserver directory not found
 )
 
 if exist "%password%\alert-agent\" (
     echo alert-agent directory found
-	start cmd /c "cd /d %password%\alert-agent &&  sbt update clean compile publishLocal dist && "C:\Program Files\WinRAR\WinRAR.exe" x "%password%\alert-agent\target\universal\alert-agent-1.0.zip" "%newPath%""
+	start cmd /K "cd /d %password%\alert-agent &&  sbt update clean compile publishLocal dist && "C:\Program Files\WinRAR\WinRAR.exe" x "%password%\alert-agent\target\universal\alert-agent-1.0.zip" "%newPath%""
 ) else (
     echo alert-agent directory not found
 )
