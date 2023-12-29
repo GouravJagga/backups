@@ -1,69 +1,20 @@
 @echo off
 
-set "path=%cd%"
+cd ..
+set "current_path=%cd%"
 echo Current Directory: %cd%
-
-set "sbtCommand="
-
-if exist "%path%\alertplatform\" (
-    echo alertplatform directory found
-    set "sbtCommand=cd /d %path%\alertplatform && sbt eclipse"
-) else (
-    echo alertplatform directory not found
-)
-
-if exist "%path%\alertreconstaging\" (
-    echo alertreconstaging directory found
-    if defined sbtCommand (
-        set "sbtCommand=%sbtCommand% && cd /d %path%\alertreconstaging && sbt eclipse"
+rem List of directories to check
+set "directories=alertplatform alertreconstaging alertserver alertapiserver alertjobserver alert-agent alert-mobile-credential"
+for %%d in (%directories%) do (
+    if exist "%current_path%\%%d\" (
+        echo %%d directory found
+		cd %current_path%\%%d\ && sbt eclipse
     ) else (
-        set "sbtCommand=cd /d %path%\alertreconstaging && sbt eclipse"
+        echo %%d directory not found
     )
-) else (
-    echo alertreconstaging directory not found
 )
 
-if exist "%path%\alertserver\" (
-    echo alertserver directory found
-    if defined sbtCommand (
-        set "sbtCommand=%sbtCommand% && cd /d %path%\alertserver && sbt eclipse"
-    ) else (
-        set "sbtCommand=cd /d %path%\alertserver && sbt eclipse"
-    )
-) else (
-    echo alertreconstaging directory not found
+echo %sbtCommand%
+if defined sbtCommand (
+    call %sbtCommand%
 )
-
-if exist "%path%\alertapiserver\" (
-    echo alertapiserver directory found
-    if defined sbtCommand (
-        set "sbtCommand=%sbtCommand% && cd /d %path%\alertapiserver && sbt eclipse"
-    ) else (
-        set "sbtCommand=cd /d %path%\alertapiserver && sbt eclipse"
-    )
-) else (
-    echo alertapiserver directory not found
-)
-
-if exist "%path%\alertjobserver\" (
-    echo alertjobserver directory found
-    if defined sbtCommand (
-        set "sbtCommand=%sbtCommand% && cd /d %path%\alertjobserver && sbt eclipse"
-    ) else (
-        set "sbtCommand=cd /d %path%\alertjobserver && sbt eclipse"
-    )
-) else (
-    echo alertjobserver directory not found
-)
-
-if exist "%path%\alert-agent\" (
-    echo alert-agent directory found
-    if defined sbtCommand (
-        set "sbtCommand=%sbtCommand% && cd /d %path%\alert-agent && sbt eclipse"
-    ) else (
-        set "sbtCommand=cd /d %path%\alert-agent && sbt eclipse"
-    )
-) else (
-    echo alert-agent directory not found
-)
-call %sbtCommand%

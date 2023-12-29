@@ -8,4 +8,6 @@ copy "%password%\alert-job-server-1.0\conf\environment.conf" "%newPath%\UAT\aler
 copy "%password%\alert-job-server-1.0\conf\cache.conf" "%newPath%\UAT\alertjobserver\conf"
 copy "%password%\alert-agent-1.0\conf\environment.conf" "%newPath%\UAT\alert-agent\conf"
 copy "%password%\alert-agent-1.0\conf\cache.conf" "%newPath%\UAT\alert-agent\conf"
+copy "%password%\alert-mobile-credential-1.0\conf\environment.conf" "%newPath%\UAT\alert-mobile-credential\conf"
+copy "%password%\alert-mobile-credential-1.0\conf\cache.conf" "%newPath%\UAT\alert-mobile-credential\conf"
 cd %password1%

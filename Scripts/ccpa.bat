@@ -1,5 +1,5 @@
 @echo off
-
+cd ..
 set "password=%cd%"
 echo Current Directory: %cd%
 
