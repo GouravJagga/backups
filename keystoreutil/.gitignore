@@ -1,0 +1,16 @@
+/bin/
+/target/
+/build/
+/project/target/
+/app/target/
+/utils/
+/project/
+/conf/target/
+/.classpath
+/.project
+/.settings
+/app/.classpath
+/app/.project
+/app/.settings
+/logs/
+/.apt_generated/
