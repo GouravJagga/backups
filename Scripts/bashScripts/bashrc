@@ -1,0 +1,48 @@
+#builds and hsc commands
+alias ccpa='sh D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/compileAllBaseRepos.sh'
+alias build='sh D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/buildRepo.sh'
+alias buildall='sh D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/buildAllRepo.sh'
+alias cpy='sh D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/copyFiles.sh'
+alias ccp='sh D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/compileBaseRepo.sh'
+alias api='D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/api.sh'
+alias job='D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/job.sh'
+alias agent='D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/agent.sh'
+alias mob='D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/mob.sh'
+alias eclall='D:/HSC_WORKSPACE/BACKUPS/Scripts/bashScripts/eclipseAll.sh'
+#zoo kafka commands
+alias zoo1='D:/HSC_WORKSPACE/kafka/apache-zookeeper_node1/bin/zkServer.sh start-foreground'
+alias zoo2='D:/HSC_WORKSPACE/kafka/apache-zookeeper_node2/bin/zkServer.sh start-foreground'
+alias zoo3='D:/HSC_WORKSPACE/kafka/apache-zookeeper_node3/bin/zkServer.sh start-foreground'
+alias zoo1cd='cd D:/HSC_WORKSPACE/kafka/apache-zookeeper_node1'
+alias kaf1='cd /d/HSC_WORKSPACE/kafka/kafka_node1 && ./bin/kafka-server-start.sh config/server.properties'
+alias kaf2='cd /d/HSC_WORKSPACE/kafka/kafka_node2 && ./bin/kafka-server-start.sh config/server.properties'
+alias kaf3='cd /d/HSC_WORKSPACE/kafka/kafka_node3 && ./bin/kafka-server-start.sh config/server.properties'
+alias kaf1cd='cd /d/HSC_WORKSPACE/kafka/kafka_node1'
+function topic() {
+    local port="$1"
+    shift
+    cd /d/HSC_WORKSPACE/kafka/kafka_node1 || return
+    ./bin/kafka-topics.sh --bootstrap-server "localhost:${port}" "$@"
+}
+function producer() {
+    local port="$1"
+    shift
+    cd /d/HSC_WORKSPACE/kafka/kafka_node1 || return
+    ./bin/kafka-console-producer.sh --bootstrap-server "localhost:${port}" "$@"
+}
+function consumer() {
+    local port="$1"
+    shift
+    cd /d/HSC_WORKSPACE/kafka/kafka_node1 || return
+    ./bin/kafka-console-consumer.sh --bootstrap-server "localhost:${port}" "$@"
+}
+function consumergrp() {
+    local port="$1"
+    shift
+    cd /d/HSC_WORKSPACE/kafka/kafka_node1 || return
+    ./bin/kafka-consumer-groups.sh --bootstrap-server "localhost:${port}" "$@"
+}
+#rediscommands
+alias redis-cli='"C:/Program Files/Redis/redis-cli.exe"'
+#jmeter
+alias jmeter='D:/HSC_WORKSPACE/Jmeter/apache-jmeter-5.6.3/bin/jmeter.sh'
